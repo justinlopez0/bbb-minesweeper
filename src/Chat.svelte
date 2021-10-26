@@ -2,8 +2,8 @@
 let client = new Colyseus.Client('ws://localhost:2567');
 
 client.joinOrCreate("chat_room").then(room => {
-    room.state.messages.onAdd = (message, key) => {
-        var p = document.createElement("p");
+    room.state.messages.onAdd = (message) => {
+        let p = document.createElement("p");
         p.innerText = message;
         let messages = document.querySelector("#messages");
         messages.appendChild(p);
@@ -17,7 +17,6 @@ client.joinOrCreate("chat_room").then(room => {
             if (e.target.value.trim() !== '') {
                 room.send("message", e.target.value);
             }
-
             // clear input
             e.target.value = "";
         }
@@ -47,14 +46,14 @@ client.joinOrCreate("chat_room").then(room => {
     margin-left: 10px;
     margin-right: 10px;
     background-color: #222222;
-    color: #ddca7e;
+    color: #f4b952;
     border-radius: 5px;
 }
 
 #chat #messages {
     padding: 10px 20px 0 20px;
     overflow-y: scroll;
-    color: #ddca7e;
+    color: #f4b952;
 
     overflow-y: auto;
     scrollbar-width: auto;
