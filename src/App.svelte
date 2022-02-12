@@ -1,7 +1,11 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import { Server } from "./server";
   import Tile, { TileType } from "./Tile.svelte";
   import Chat from "./Chat.svelte";
+
+  let ws = new WebSocket('ws://localhost:6969');
+  const server = new Server(ws);
 
   export let width;
   export let height;
